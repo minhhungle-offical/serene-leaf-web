@@ -61,15 +61,15 @@ export default function Home() {
 
       <MainLayout>
         <Hero
-          onViewProducts={() => router.push(`/products`)}
+          onViewProducts={() => router.push(`/shop`)}
           onVisitOurStore={() => router.push(`/contact`)}
         />
 
         <WhyUs />
         <LatestProducts
           productList={productList}
-          onCardClick={(item) => router.push(`/products/${item._id}`)}
-          onViewProducts={() => router.push(`/products`)}
+          onCardClick={(item) => router.push(`/shop/${item._id}`)}
+          onViewProducts={() => router.push(`/shop`)}
         />
         <About />
         <VisitUs />
