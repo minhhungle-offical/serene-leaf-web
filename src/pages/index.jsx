@@ -32,7 +32,7 @@ export default function Home() {
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://serene-leaf.vercel.app" />
+        <meta property="og:url" content="https://sereneleaf.vercel.app" />
         <meta property="og:title" content="Serene Leaf | Natural Herbal Teas" />
         <meta
           property="og:description"
