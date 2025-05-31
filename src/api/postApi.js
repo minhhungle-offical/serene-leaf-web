@@ -6,8 +6,13 @@ export const postApi = {
   getAll(params) {
     return axiosClient.get(`${url}`, { params })
   },
+
   getById(id) {
     return axiosClient.get(`${url}/${id}`)
+  },
+
+  getSlug(slug) {
+    return axiosClient.get(`${url}/slug/${slug}`)
   },
 
   add(payload) {

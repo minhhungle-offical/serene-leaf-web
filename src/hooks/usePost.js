@@ -16,3 +16,17 @@ export const usePosts = (params) => {
     error,
   }
 }
+export const usePost = (slug) => {
+  const queryKey = ['/post', slug]
+
+  const { data, isLoading, error } = useQuery({
+    queryKey,
+    queryFn: () => postApi.getSlug(slug),
+  })
+
+  return {
+    data,
+    isLoading,
+    error,
+  }
+}

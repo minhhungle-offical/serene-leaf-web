@@ -1,7 +1,6 @@
 import { Box } from '@mui/material'
 import { Header } from '../Common/Header'
 import { Footer } from '../Common/Footer'
-import SideBar from '../Common/SideBar'
 
 const menuList = [
   {
@@ -17,8 +16,8 @@ const menuList = [
     path: '/about',
   },
   {
-    label: 'Blog',
-    path: '/blog',
+    label: 'Blogs',
+    path: '/blogs',
   },
   {
     label: 'Find Us',

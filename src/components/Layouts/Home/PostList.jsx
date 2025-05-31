@@ -36,7 +36,8 @@ export function PostList({ postList = [], onViewPost, onCardClick }) {
                         title={item.title}
                         imageUrl={item.image?.url}
                         shortDescription={item.shortDescription}
-                        author={item.author}
+                        author={item.author.name}
+                        category={item.category.name}
                         createdAt={item.createdAt}
                       />
                     </Box>

@@ -5,14 +5,15 @@ import { PostList } from '@/components/Layouts/Home/PostList'
 import { VisitUs } from '@/components/Layouts/Home/VisitUs'
 import { WhyUs } from '@/components/Layouts/Home/WhyUs'
 import { MainLayout } from '@/components/Layouts/MainLayout'
+import { usePosts } from '@/hooks/usePost'
 import { useProducts } from '@/hooks/useProduct'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 export default function Home() {
   const router = useRouter()
-  const postList = []
   const { data: productList } = useProducts({ page: 1, limit: 4 })
+  const { data: postList } = usePosts({ page: 1, limit: 2 })
 
   return (
     <>
@@ -73,7 +74,10 @@ export default function Home() {
         />
         <About />
         <VisitUs />
-        <PostList postList={postList} />
+        <PostList
+          postList={postList}
+          onViewPost={() => router.push(`/blogs`)}
+        />
       </MainLayout>
     </>
   )
