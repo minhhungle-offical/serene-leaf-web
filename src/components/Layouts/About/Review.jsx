@@ -2,10 +2,10 @@ import { Box, Rating, Stack, Typography } from '@mui/material'
 import { Title } from '@/components/Common/Title'
 
 const reviewList = [
-  `“This green tea is simply amazing. The leaves are of the highest quality, and the tea has a rich flavor that is both relaxing and invigorating.”`,
-  `“If you're a green tea lover, you must try this one. It's one of the best I've tasted, with a perfect balance of flavors and a smooth finish.”`,
-  `“I've tried many green teas before, but this one is something special. The taste is smooth and refined, with a subtle sweetness that is simply delightful.”`,
-  `“The green tea from this plantation is simply outstanding! I have tried many green teas before, but this one stands out with its unique flavor and aroma. Highly recommend!"`,
+  `“Absolutely amazing green tea. Rich flavor, smooth, and very refreshing.”`,
+  `“One of the best I’ve ever had — perfectly balanced and incredibly smooth.”`,
+  `“Delicate, slightly sweet, and beautifully refined. A must-try for tea lovers!”`,
+  `“Exceptional quality and aroma. This tea truly stands out. Highly recommended!”`,
 ]
 
 export function Review() {

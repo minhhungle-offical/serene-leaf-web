@@ -48,15 +48,17 @@ export function OurStory() {
           </Typography>
 
           <Typography sx={{ mb: 3 }}>
-            Sed blandit purus tincidunt gravida consequat. Cras condimentum,
-            sapien non elementum malesuada, magna nunc maximus neque, a dictum
-            nisi nisi non lorem.
+            Serene Leaf began with a small hillside tea farm, where our family
+            cultivated green tea using time-honored techniques and deep respect
+            for nature. What started as a humble tradition soon became a
+            lifelong passion.
           </Typography>
 
           <Typography sx={{ mb: 3 }}>
-            Donec euismod viverra lorem, at fermentum ex eleifend vel. Proin
-            congue molestie ipsum. Sed aliquam elit eget euismod sollicitudin.
-            Quisque quis eros a turpis luctus aliquet.
+            Over the years, we’ve blended generations of farming knowledge with
+            a commitment to sustainability and quality. Today, every leaf we
+            produce reflects that journey — from the soil of our farm to your
+            cup.
           </Typography>
         </Stack>
       </Box>

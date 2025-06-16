@@ -26,7 +26,6 @@ export function ShopFilter({ filterParams, onFilterChange, categoryList }) {
   const handlePriceChange = debounce((numbers) => {
     const minPrice = numbers[0]
     const maxPrice = numbers[1]
-
     const newParams = {
       ...filterParams,
       minPrice,
@@ -35,7 +34,7 @@ export function ShopFilter({ filterParams, onFilterChange, categoryList }) {
     }
 
     onFilterChange?.(newParams)
-  }, 600)
+  })
 
   return (
     <Stack justifyContent="center" spacing={3} sx={{ width: '100%' }}>

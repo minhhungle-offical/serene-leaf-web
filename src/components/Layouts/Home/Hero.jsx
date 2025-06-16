@@ -28,16 +28,16 @@ export function Hero({ onViewProducts, onVisitOurStore }) {
                 fontWeight={700}
                 marginBottom={3}
               >
-                Indulge in the{' '}
+                Experience the{' '}
                 <Box component="span" sx={{ color: 'primary.main' }}>
-                  Natural and Authentic
+                  Pure Essence
                 </Box>{' '}
-                Flavor of Our Green Tea
+                of Premium Japanese Green Tea
               </Typography>
 
               <Typography variant="h5" marginBottom={3}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                vitae aliquet justo, vitae lacinia lacus.
+                Handpicked from our hillside gardens and crafted with care,
+                every sip brings you a moment of calm, clarity, and tradition.
               </Typography>
 
               <Stack

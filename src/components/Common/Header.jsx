@@ -25,7 +25,7 @@ export function Header({ menuList = [], onShopNow }) {
           >
             <MenuIcon />
           </IconButton>
-          <Box component={Link} href="/home">
+          <Box component={Link} href="/">
             <Box
               component="img"
               alt="logo"
@@ -60,7 +60,7 @@ export function Header({ menuList = [], onShopNow }) {
             {menuList?.map((item, idx) => (
               <Box
                 component={Link}
-                href={item.path}
+                href={item.href}
                 key={idx}
                 sx={{ display: { xs: 'none', md: 'flex' } }}
               >

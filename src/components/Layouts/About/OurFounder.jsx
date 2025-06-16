@@ -43,10 +43,15 @@ export function OurFounder() {
                   </Typography>
 
                   <Typography>
-                    Nullam malesuada bibendum finibus. Integer interdum
-                    malesuada risus a rhoncus. Vivamus tempus quam dapibus,
-                    hendrerit nulla vitae, imperdiet leo. Vestibulum consequat
-                    nulla nec neque sodales interdum.
+                    Serene Leaf was founded by a third-generation tea grower who
+                    inherited not only his family's hillside farm, but also a
+                    deep appreciation for the craft of tea making.
+                    <br />
+                    <br />
+                    Guided by tradition and driven by a vision to share pure,
+                    handcrafted green tea with the world, he turned a local
+                    legacy into a global journey — rooted in care, quality, and
+                    love for nature.
                   </Typography>
                 </Stack>
               </Box>

@@ -33,23 +33,23 @@ export function About() {
           }}
         >
           <Typography variant="h5" fontWeight={400} gutterBottom>
-            About us
+            About Us
           </Typography>
 
           <Typography variant="h4" fontWeight={600} gutterBottom>
-            Unfolding the History and Heritage of Our Green Tea
+            A Journey Through Generations of Green Tea Mastery
           </Typography>
 
           <Typography sx={{ mb: 3 }}>
-            Sed non sem lobortis ligula facilisis accumsan ut nec justo. Integer
-            a elit augue. Quisque varius facilisis risus, eget tristique tortor
-            lacinia a.
+            At Serene Leaf, our story begins with a passion passed down through
+            generations — a love for green tea and the art of cultivating it
+            with care, respect, and tradition.
           </Typography>
 
           <Typography sx={{ mb: 3 }}>
-            Fusce ultrices purus id quam tincidunt, sit amet blandit mauris
-            maximus. Aliquam dictum lorem consectetur tortor viverra, in posuere
-            metus sodales.
+            Every leaf is handpicked, and every blend reflects the harmony of
+            nature and craftsmanship. Our mission is simple: to bring you a cup
+            of tea that calms the soul and energizes the spirit.
           </Typography>
 
           <Box>

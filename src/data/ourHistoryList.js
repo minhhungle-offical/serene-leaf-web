@@ -1,26 +1,26 @@
 export const ourHistoryList = [
   {
     year: 1983,
-    title: 'Establishment of Our Green Tea Plantation',
+    title: 'The Beginning of Our Tea Journey',
     description:
-      'Our family established a green tea plantation in a hilly region with a subtropical climate that is ideal for growing tea plants.',
+      'Our family began cultivating green tea in a small hillside village, where the climate and soil created the perfect conditions for high-quality tea leaves.',
   },
   {
     year: 1996,
-    title: 'Focus on Quality and Sustainability',
+    title: 'Commitment to Quality and Sustainability',
     description:
-      'We began to focus on producing premium green teas while ensuring sustainable farming practices.',
+      'We shifted our focus toward crafting premium green tea while adopting sustainable and environmentally responsible farming practices.',
   },
   {
     year: 2000,
-    title: 'Modernization and Expansion',
+    title: 'Growth and Modernization',
     description:
-      'We modernized our equipment and expanded our plantation, which allowed us to produce even more high-quality green teas.',
+      'With new generations joining the farm, we modernized our equipment and expanded production — without compromising quality or tradition.',
   },
   {
     year: 2006,
-    title: 'Launch of Serene Leaf',
+    title: 'Serene Leaf Was Born',
     description:
-      'Inspired by our passion for green tea, we launched Serene Leaf as a premium green tea brand, using only the finest leaves from our own plantation',
+      'Serene Leaf was officially launched as a family-run tea brand, bringing our finest handpicked green teas from the farm to tea lovers around the world.',
   },
 ]

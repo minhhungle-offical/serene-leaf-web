@@ -5,23 +5,23 @@ import { Footer } from '../Common/Footer'
 const menuList = [
   {
     label: 'Home',
-    path: '/',
+    href: { pathname: '/' },
   },
   {
     label: 'Shop',
-    path: '/shop',
+    href: { pathname: '/shop', query: { page: 1, limit: 6 } },
   },
   {
     label: 'About',
-    path: '/about',
+    href: { pathname: '/about' },
   },
   {
     label: 'Blogs',
-    path: '/blogs',
+    href: { pathname: '/blogs', query: { page: 1, limit: 6 } },
   },
   {
     label: 'Find Us',
-    path: '/contact',
+    href: { pathname: '/contact' },
   },
 ]
 

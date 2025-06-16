@@ -9,10 +9,9 @@ export function WhyUs({ onViewProducts }) {
       <Container>
         <Stack spacing={10} alignItems="center">
           <Title
-            pageName="  Why Serene Leaf"
-            title="Explore the Special Qualities of Our Green Tea"
-            subtitle="Phasellus sed erat metus. Cras pharetra, elit sit amet molestie
-            placerat, metus lectus sodales purus, posuere."
+            pageName="Why Serene Leaf"
+            title="Why Choose Serene Leaf?"
+            subtitle="From farm to cup, we bring you premium green tea crafted with care, tradition, and a deep respect for nature."
           />
 
           <Box data-aos="fade-up" data-aos-duration="1000">

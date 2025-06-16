@@ -1,19 +1,18 @@
-import { About } from '@/components/Layouts/Home/About'
-import { Hero } from '@/components/Layouts/Home/Hero'
-import { LatestProducts } from '@/components/Layouts/Home/LastestProducts'
-import { PostList } from '@/components/Layouts/Home/PostList'
-import { VisitUs } from '@/components/Layouts/Home/VisitUs'
-import { WhyUs } from '@/components/Layouts/Home/WhyUs'
-import { MainLayout } from '@/components/Layouts/MainLayout'
-import { usePosts } from '@/hooks/usePost'
-import { useProducts } from '@/hooks/useProduct'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { Container, Divider } from '@mui/material'
+import { Hero } from '@/components/Layouts/Home/Hero'
+import { WhyUs } from '@/components/Layouts/Home/WhyUs'
+import { LatestProducts } from '@/components/Layouts/Home/LastestProducts'
+import { About } from '@/components/Layouts/Home/About'
+import { VisitUs } from '@/components/Layouts/Home/VisitUs'
+import { PostList } from '@/components/Layouts/Home/PostList'
+import { MainLayout } from '@/components/Layouts/MainLayout'
+import { productApi } from '@/api/productApi'
+import { postApi } from '@/api/postApi'
 
-export default function Home() {
+export default function Home({ productList, postList }) {
   const router = useRouter()
-  const { data: productList } = useProducts({ page: 1, limit: 4 })
-  const { data: postList } = usePosts({ page: 1, limit: 2 })
 
   return (
     <>
@@ -25,13 +24,9 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
-
-        {/* Favicon */}
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-
-        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://sereneleaf.vercel.app" />
         <meta property="og:title" content="Serene Leaf | Natural Herbal Teas" />
@@ -43,8 +38,6 @@ export default function Home() {
           property="og:image"
           content="https://res.cloudinary.com/dea5jhokr/image/upload/v1748596647/tea_wilzys.png"
         />
-
-        {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
@@ -62,23 +55,56 @@ export default function Home() {
 
       <MainLayout>
         <Hero
-          onViewProducts={() => router.push(`/shop`)}
+          onViewProducts={() => router.push(`/shop?page=1&limit=6`)}
           onVisitOurStore={() => router.push(`/contact`)}
         />
 
         <WhyUs />
+
         <LatestProducts
           productList={productList}
-          onCardClick={(item) => router.push(`/shop/${item._id}`)}
-          onViewProducts={() => router.push(`/shop`)}
+          onCardClick={(item) => router.push(`/shop/${item.slug}`)}
+          onViewProducts={() => router.push(`/shop?page=1&limit=6`)}
         />
+
         <About />
+
         <VisitUs />
+
+        <Container>
+          <Divider />
+        </Container>
+
         <PostList
           postList={postList}
-          onViewPost={() => router.push(`/blogs`)}
+          onViewPost={() => router.push(`/blogs?page=1&limit=6`)}
         />
       </MainLayout>
     </>
   )
+}
+
+export async function getStaticProps() {
+  try {
+    const [productRes, postRes] = await Promise.all([
+      productApi.getAll({ page: 1, limit: 4 }),
+      postApi.getAll({ page: 1, limit: 2 }),
+    ])
+
+    return {
+      props: {
+        productList: productRes?.data || [],
+        postList: postRes?.data || [],
+      },
+      revalidate: 60, // ISR: làm mới mỗi 60 giây
+    }
+  } catch (error) {
+    console.error('Failed to load home page data:', error)
+    return {
+      props: {
+        productList: [],
+        postList: [],
+      },
+    }
+  }
 }

@@ -9,9 +9,8 @@ export function PostList({ postList = [], onViewPost, onCardClick }) {
         <Stack spacing={10} alignItems="center">
           <Title
             pageName="Blog"
-            title="Creative Recipes & Tips"
-            subtitle="Aenean sodales nisl non dui lacinia luctus. Curabitur vitae luctus
-            eros. Vivamus fermentum dictum metus, et."
+            title="Inspiration, Recipes & Tea Wisdom"
+            subtitle="Discover creative ways to enjoy green tea — from delicious recipes to mindful brewing tips that elevate your daily ritual."
           />
 
           <Box width="100%">

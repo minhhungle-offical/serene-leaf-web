@@ -16,7 +16,7 @@ export default function About() {
             <Title
               pageName="About Serene Leaf"
               title="Our Passion for Green Tea: A Tradition of Excellence"
-              subtitle="Sed fermentum tellus neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consectetur cursus est, vitae finibus elit condimentum eu."
+              subtitle="From our hillside farms to your cup, Serene Leaf is built on generations of care, craftsmanship, and a deep respect for the art of tea making."
             />
           </Box>
 

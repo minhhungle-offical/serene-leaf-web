@@ -7,8 +7,8 @@ export const productApi = {
     return axiosClient.get(`${url}`, { params })
   },
 
-  getById(id) {
-    return axiosClient.get(`${url}/${id}`)
+  getBySlug(slug) {
+    return axiosClient.get(`${url}/slug/${slug}`)
   },
 
   add(payload) {

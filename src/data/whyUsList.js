@@ -6,19 +6,19 @@ export const whyUsList = [
   {
     title: 'Artisanal Production',
     description:
-      'Donec tincidunt nisi id neque dapibus aliquam. Vestibulum in erat libero. Etiam nec urna mattis, fermentum.',
+      'Each batch of our tea is carefully hand-processed in small quantities to preserve freshness, aroma, and authentic flavor.',
     imageUrl: strainer.src,
   },
   {
     title: 'High-Quality Ingredients',
     description:
-      'In a tincidunt nulla, vitae sollicitudin sapien. Integer et risus efficitur, varius tellus at, ultrices arcu.',
+      'We use only the finest first-harvest green tea leaves, cultivated naturally without synthetic chemicals or additives.',
     imageUrl: whisk.src,
   },
   {
     title: 'Unique Flavor Profiles',
     description:
-      'Morbi iaculis rutrum nisl, a hendrerit dui finibus ac. Donec at est consectetur velit porttitor sodales.',
+      'From earthy umami to subtle sweetness, our green teas offer a distinctive taste experience rooted in tradition.',
     imageUrl: cup.src,
   },
 ]

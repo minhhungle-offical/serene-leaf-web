@@ -10,10 +10,10 @@ export const axiosClient = axios.create({
 // Add a request interceptor
 axiosClient.interceptors.request.use(function (config) {
   // Auto attach token to request if available in local storage
-  const token = localStorage.getItem('token')
-  if (config.url !== '/login' && token) {
-    config.headers['Authorization'] = `Bearer ${token}`
-  }
+  // const token = localStorage.getItem('token')
+  // if (config.url !== '/login' && token) {
+  //   config.headers['Authorization'] = `Bearer ${token}`
+  // }
 
   // Do something before request is sent
   return config
@@ -28,10 +28,8 @@ axiosClient.interceptors.response.use(
     return axiosData.pagination ? axiosData : axiosData.data
   },
   function (error) {
+    console.log('error: ', error)
     // Clean up token if 401
-    if (error.response.status === 401) {
-      localStorage.removeItem('token')
-    }
 
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error

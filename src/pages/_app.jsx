@@ -1,3 +1,4 @@
+import { PageLoading } from '@/components/Common/LoadingPage'
 import '@/styles/globals.css'
 import { CssBaseline } from '@mui/material'
 import {
@@ -48,6 +49,7 @@ export default function App({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <SnackbarProvider maxSnack={3}>
+          <PageLoading />
           <Component {...pageProps} />
         </SnackbarProvider>
       </ThemeProvider>

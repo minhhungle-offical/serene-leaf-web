@@ -13,9 +13,8 @@ export function LatestProducts({
         <Stack spacing={10} alignItems="center">
           <Title
             pageName="Our Tea"
-            title="Latest Products"
-            subtitle="Maecenas convallis, quam quis porta ornare, felis ligula posuere
-            dui, non placerat enim dolor ac justo."
+            title="Discover Our Freshest Green Tea Selection"
+            subtitle="Carefully handpicked and crafted, our latest products capture the essence of pure, authentic green tea from nature to cup."
           />
 
           <Box width="100%">

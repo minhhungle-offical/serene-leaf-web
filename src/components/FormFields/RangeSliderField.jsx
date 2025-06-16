@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
+import { debounce } from 'lodash'
 import * as React from 'react'
 
 export default function RangeSliderField({
@@ -12,7 +13,7 @@ export default function RangeSliderField({
 
   const handleValueChange = (event, newValue) => {
     setValue(newValue)
-    onChange?.(value)
+    onChange?.(newValue)
   }
 
   return (
