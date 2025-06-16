@@ -20,7 +20,11 @@ export function Hero({ onViewProducts, onVisitOurStore }) {
           sx={{ py: { xs: 3, md: 10 }, mx: { sm: -5 } }}
           flexWrap="wrap"
         >
-          <Box width={{ xs: '100%', md: 4 / 7 }}>
+          <Box
+            width={{ xs: '100%', md: 4 / 7 }}
+            data-aos="fade-right"
+            data-aos-duration="1200"
+          >
             <Box sx={{ p: { sm: 5 } }}>
               <Typography
                 variant="h3"
@@ -49,7 +53,11 @@ export function Hero({ onViewProducts, onVisitOurStore }) {
                   '& button': { textTransform: 'none' },
                 }}
               >
-                <Box width={{ xs: '100%', sm: 1 / 2 }}>
+                <Box
+                  width={{ xs: '100%', sm: 1 / 2 }}
+                  data-aos="zoom-in"
+                  data-aos-delay="200"
+                >
                   <Box sx={{ p: 1 }}>
                     <Button
                       fullWidth
@@ -62,7 +70,11 @@ export function Hero({ onViewProducts, onVisitOurStore }) {
                   </Box>
                 </Box>
 
-                <Box width={{ xs: '100%', sm: 1 / 2 }}>
+                <Box
+                  width={{ xs: '100%', sm: 1 / 2 }}
+                  data-aos="zoom-in"
+                  data-aos-delay="400"
+                >
                   <Box sx={{ p: 1 }}>
                     <Button
                       fullWidth
@@ -80,7 +92,7 @@ export function Hero({ onViewProducts, onVisitOurStore }) {
 
           <Box
             width={{ xs: '100%', md: 3 / 7 }}
-            data-aos="fade-up"
+            data-aos="fade-left"
             data-aos-duration="2000"
           >
             <Box sx={{ px: { sm: 5 }, py: 5 }}>

@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 
     return {
       paths,
-      fallback: 'blocking', // 'blocking' = build trang khi user request
+      fallback: 'blocking',
     }
   } catch (error) {
     return { paths: [], fallback: 'blocking' }
@@ -39,7 +39,7 @@ export async function getStaticProps({ params }) {
 
     return {
       props: { product },
-      revalidate: 60, // ISR: build lại sau mỗi 60 giây
+      revalidate: 60,
     }
   } catch (error) {
     return { notFound: true }
@@ -47,12 +47,11 @@ export async function getStaticProps({ params }) {
 }
 
 export default function ProductDetailPage({ product }) {
-  // const [quantity, setQuantity] = useState(1)
-
   return (
     <MainLayout>
       <Container>
         <Stack direction="row" flexWrap="wrap" sx={{ mx: -1.5, py: 10 }}>
+          {/* IMAGE */}
           <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
             <Stack sx={{ p: 1.5 }}>
               <Box
@@ -61,13 +60,16 @@ export default function ProductDetailPage({ product }) {
                 alt={product?.name}
                 loading="lazy"
                 boxShadow={3}
+                data-aos="zoom-in"
+                data-aos-duration="1000"
                 sx={{ position: 'sticky', top: 40, width: '100%' }}
               />
             </Stack>
           </Box>
 
+          {/* PRODUCT INFO */}
           <Box sx={{ width: { xs: '100%', sm: '50%' } }}>
-            <Box sx={{ p: 1.5 }}>
+            <Box sx={{ p: 1.5 }} data-aos="fade-left" data-aos-duration="1000">
               <Stack spacing={3}>
                 <Typography variant="h4" fontWeight={600}>
                   {product?.name}
@@ -88,7 +90,6 @@ export default function ProductDetailPage({ product }) {
                       type="number"
                       size="small"
                       value={1}
-                      // onChange={(e) => setQuantity(Number(e.target.value))}
                       inputProps={{ min: 1 }}
                       sx={{ width: 100 }}
                     />
@@ -100,7 +101,12 @@ export default function ProductDetailPage({ product }) {
 
                 <Divider />
 
-                <Typography paragraph sx={{ whiteSpace: 'pre-wrap' }}>
+                <Typography
+                  paragraph
+                  sx={{ whiteSpace: 'pre-wrap' }}
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
                   {product?.description}
                 </Typography>
               </Stack>

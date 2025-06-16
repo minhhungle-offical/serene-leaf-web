@@ -7,7 +7,11 @@ export function VisitUs({ onContactClick }) {
     <Box sx={{ py: 15 }}>
       <Container>
         <Stack direction="row" flexWrap="wrap" sx={{ mx: -3 }}>
-          <Box sx={{ width: { xs: '100%', md: 1 / 2 }, height: 'auto' }}>
+          <Box
+            sx={{ width: { xs: '100%', md: 1 / 2 }, height: 'auto' }}
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
             <Box sx={{ p: 3, height: '100%' }}>
               <Stack justifyContent="center" height="100%">
                 <Typography
@@ -33,11 +37,20 @@ export function VisitUs({ onContactClick }) {
                 </Typography>
 
                 <Stack direction="row" spacing={1}>
-                  <Box onClick={() => onContactClick?.()}>
+                  <Box
+                    onClick={() => onContactClick?.()}
+                    data-aos="zoom-in"
+                    data-aos-delay="200"
+                  >
                     <Button variant="contained">Contact Us</Button>
                   </Box>
 
-                  <Box component="a" href="https://www.google.com/maps">
+                  <Box
+                    component="a"
+                    href="https://www.google.com/maps"
+                    data-aos="zoom-in"
+                    data-aos-delay="400"
+                  >
                     <Button variant="outlined">Open Google Map</Button>
                   </Box>
                 </Stack>
@@ -45,7 +58,11 @@ export function VisitUs({ onContactClick }) {
             </Box>
           </Box>
 
-          <Box sx={{ width: { xs: '100%', md: 1 / 2 } }}>
+          <Box
+            sx={{ width: { xs: '100%', md: 1 / 2 } }}
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
             <Box sx={{ p: 3 }}>
               <Stack direction="row" sx={{ ml: -2 }}>
                 <Box
@@ -53,12 +70,16 @@ export function VisitUs({ onContactClick }) {
                   src={visit_1.src}
                   alt="visit1"
                   sx={{ width: 1 / 2, mb: 15, ml: 2 }}
+                  data-aos="fade-up-right"
+                  data-aos-delay="200"
                 />
                 <Box
                   component="img"
                   src={visit_2.src}
                   alt="visit2"
                   sx={{ width: 1 / 2, mt: 15, ml: -2 }}
+                  data-aos="fade-down-left"
+                  data-aos-delay="400"
                 />
               </Stack>
             </Box>

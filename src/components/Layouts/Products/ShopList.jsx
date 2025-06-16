@@ -14,11 +14,13 @@ export function ShopList({ productList = [], onCardClick, isLoading }) {
     <Stack direction="row" flexWrap="wrap" sx={{ mx: -1.5 }}>
       {Array.isArray(productList) &&
         productList.length > 0 &&
-        productList?.map((item, idx) => (
+        productList.map((item, idx) => (
           <Box
             width={{ xs: '100%', sm: 1 / 2, md: 1 / 3 }}
             key={idx}
             onClick={() => onCardClick?.(item)}
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}
           >
             <Box sx={{ p: 1.5 }}>
               <ProductCard

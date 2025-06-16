@@ -6,7 +6,13 @@ export function OurHistory() {
   return (
     <Stack direction="row" flexWrap="wrap" sx={{ mx: -3 }}>
       {ourHistoryList.map((item, idx) => (
-        <Box key={idx} sx={{ width: { xs: '100%', sm: 1 / 2 } }}>
+        <Box
+          key={idx}
+          sx={{ width: { xs: '100%', sm: 1 / 2 } }}
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay={idx * 100}
+        >
           <Box sx={{ p: 3 }}>
             <Stack alignItems="center" sx={{ textAlign: 'center' }} spacing={2}>
               <Typography variant="h5" fontWeight={600} color="primary">

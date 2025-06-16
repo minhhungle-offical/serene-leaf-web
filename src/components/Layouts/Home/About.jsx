@@ -9,6 +9,8 @@ export function About() {
           xs: '100%',
           md: 1 / 2,
         }}
+        data-aos="fade-right"
+        data-aos-duration="1000"
       >
         <Box
           component="img"
@@ -21,7 +23,12 @@ export function About() {
         />
       </Box>
 
-      <Box width={{ xs: '100%', md: 1 / 2 }} sx={{ height: 'auto' }}>
+      <Box
+        width={{ xs: '100%', md: 1 / 2 }}
+        sx={{ height: 'auto' }}
+        data-aos="fade-left"
+        data-aos-duration="1000"
+      >
         <Stack
           justifyContent="center"
           sx={{
@@ -52,7 +59,7 @@ export function About() {
             of tea that calms the soul and energizes the spirit.
           </Typography>
 
-          <Box>
+          <Box data-aos="zoom-in" data-aos-delay="300">
             <Button
               variant="contained"
               color="inherit"

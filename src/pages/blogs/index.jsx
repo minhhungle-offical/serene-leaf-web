@@ -27,7 +27,8 @@ export default function BlogPage({ postList, pagination }) {
   return (
     <MainLayout>
       <Container>
-        <Box sx={{ my: 10 }}>
+        {/* Tiêu đề có hiệu ứng */}
+        <Box sx={{ my: 10 }} data-aos="fade-down" data-aos-duration="1000">
           <Title
             pageName="Blog"
             title="Explore Recipes & Tips"
@@ -36,25 +37,35 @@ export default function BlogPage({ postList, pagination }) {
         </Box>
 
         <Stack sx={{ my: 10 }}>
-          <Box sx={{ mb: 3 }}>
+          {/* Bộ lọc có hiệu ứng */}
+          <Box sx={{ mb: 3 }} data-aos="fade-right" data-aos-duration="1000">
             <BlogFilter
               filterParams={query}
               onFilterChange={handleFilterChange}
             />
           </Box>
 
-          <Box data-aos-duration="2000">
+          {/* Danh sách bài viết */}
+          <Box data-aos="fade-up" data-aos-duration="1200">
             <BlogList
               blogList={postList}
               isLoading={false}
               onCardClick={(blog) => router.push(`/blogs/${blog.slug}`)}
             />
 
-            <Stack justifyContent="center" alignItems="center" sx={{ my: 3 }}>
+            {/* Phân trang có hiệu ứng */}
+            <Stack
+              justifyContent="center"
+              alignItems="center"
+              sx={{ my: 3 }}
+              data-aos="zoom-in"
+              data-aos-duration="800"
+              data-aos-delay="100"
+            >
               <Pagination
                 variant="outlined"
                 shape="rounded"
-                page={query?.page || 1}
+                page={Number(query?.page) || 1}
                 count={pagination?.totalPages || 1}
                 onChange={handlePageChange}
               />

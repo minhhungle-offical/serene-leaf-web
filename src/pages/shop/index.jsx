@@ -28,7 +28,7 @@ export default function ShopPage({ productList, categoryList, pagination }) {
       pathname: '/shop',
       query: {
         ...newFilters,
-        page: 1, // reset về page 1 khi đổi filter
+        page: 1,
       },
     })
   }
@@ -36,7 +36,7 @@ export default function ShopPage({ productList, categoryList, pagination }) {
   return (
     <MainLayout>
       <Container>
-        <Box sx={{ my: 10 }}>
+        <Box sx={{ my: 10 }} data-aos="fade-up" data-aos-duration="1000">
           <Title
             pageName="Shop"
             title="Pick Your Favorite Tea"
@@ -46,7 +46,11 @@ export default function ShopPage({ productList, categoryList, pagination }) {
 
         <Stack direction="row" flexWrap="wrap" sx={{ my: 10, mx: -1.5 }}>
           {/* FILTER SIDE */}
-          <Box sx={{ width: { xs: '100%', sm: 250 } }}>
+          <Box
+            sx={{ width: { xs: '100%', sm: 250 } }}
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
             <Box sx={{ px: 1.5, py: 3 }}>
               <Stack
                 direction="row"
@@ -89,11 +93,13 @@ export default function ShopPage({ productList, categoryList, pagination }) {
                   justifyContent="center"
                   alignItems="center"
                   sx={{ my: 3 }}
+                  data-aos="zoom-in"
+                  data-aos-delay="200"
                 >
                   <Pagination
                     variant="outlined"
                     shape="rounded"
-                    page={query?.page || 1}
+                    page={parseInt(query?.page || 1)}
                     count={pagination.totalPages}
                     onChange={handlePageChange}
                   />

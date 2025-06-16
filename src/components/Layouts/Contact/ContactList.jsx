@@ -4,10 +4,10 @@ import { PostCard } from '@/components/Common/PostCard'
 
 export function ContactList({ onCardClick }) {
   return (
-    <Box width="100%" sx={{ py: 15 }}>
+    <Box width="100%" sx={{ py: { xs: 8, md: 15 }, bgcolor: '#f9f9f9' }}>
       <Container>
         <Stack spacing={10}>
-          <Box>
+          <Box data-aos="fade-up">
             <Box textAlign="center" maxWidth={650} sx={{ mx: 'auto' }}>
               <Typography
                 variant="h5"
@@ -24,21 +24,35 @@ export function ContactList({ onCardClick }) {
             </Box>
           </Box>
 
-          <Stack direction="row" flexWrap="wrap" sx={{ mx: -1.5 }}>
+          <Stack
+            direction="row"
+            flexWrap="wrap"
+            justifyContent="center"
+            sx={{ mx: -1.5 }}
+          >
             {contactList.map((item, idx) => (
               <Box
-                width={{ xs: '100%', sm: 1 / 2 }}
                 key={idx}
+                data-aos="fade-up"
+                sx={{
+                  width: {
+                    xs: '100%',
+                    sm: '50%',
+                  },
+                  p: 1.5,
+                  transition: 'transform 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                  },
+                  cursor: 'pointer',
+                }}
                 onClick={() => onCardClick?.(item)}
-                sx={{ height: 'auto' }}
               >
-                <Box sx={{ p: 1.5, height: '100%' }}>
-                  <PostCard
-                    title={item.title}
-                    imageUrl={item.imageUrl}
-                    shortDescription={item.shortDescription}
-                  />
-                </Box>
+                <PostCard
+                  title={item.title}
+                  imageUrl={item.imageUrl}
+                  shortDescription={item.shortDescription}
+                />
               </Box>
             ))}
           </Stack>

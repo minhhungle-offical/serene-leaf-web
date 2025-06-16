@@ -9,6 +9,10 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { SnackbarProvider } from 'notistack'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+import { useEffect } from 'react'
+
 export let theme = createTheme({
   palette: {
     primary: {
@@ -24,17 +28,17 @@ export let theme = createTheme({
   components: {
     MuiPopover: {
       defaultProps: {
-        disableScrollLock: true, // 💥 Tắt scroll lock = không thêm padding vào body
+        disableScrollLock: true,
       },
     },
     MuiMenu: {
       defaultProps: {
-        disableScrollLock: true, // 💥 Tương tự
+        disableScrollLock: true,
       },
     },
     MuiDialog: {
       defaultProps: {
-        disableScrollLock: true, // optional nếu bạn dùng dialog
+        disableScrollLock: true,
       },
     },
   },
@@ -43,6 +47,13 @@ theme = responsiveFontSizes(theme)
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient()
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    })
+  }, [])
 
   return (
     <QueryClientProvider client={queryClient}>

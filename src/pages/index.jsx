@@ -59,7 +59,7 @@ export default function Home({ productList, postList }) {
           onVisitOurStore={() => router.push(`/contact`)}
         />
 
-        <WhyUs />
+        <WhyUs onViewProducts={() => router.push(`/shop?page=1&limit=6`)} />
 
         <LatestProducts
           productList={productList}

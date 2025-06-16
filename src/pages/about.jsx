@@ -11,8 +11,13 @@ export default function About() {
   return (
     <MainLayout>
       <Container>
-        <Stack sx={{ my: 10 }} spacing={10}>
-          <Box>
+        <Stack
+          sx={{ my: 10 }}
+          spacing={10}
+          alignItems="center"
+          textAlign="center"
+        >
+          <Box maxWidth="800px" data-aos="fade-up" data-aos-duration="1000">
             <Title
               pageName="About Serene Leaf"
               title="Our Passion for Green Tea: A Tradition of Excellence"
@@ -21,10 +26,12 @@ export default function About() {
           </Box>
 
           <Box
-            data-aos="fade-up"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             component="img"
             width="100%"
+            maxWidth="1000px"
+            boxShadow={4}
             alt="about-banner"
             src={aboutBanner.src}
           />
@@ -34,12 +41,14 @@ export default function About() {
       <Box sx={{ py: 15, bgcolor: '#f5f1ea' }}>
         <Container>
           <Stack spacing={10}>
-            <Box>
+            <Box data-aos="fade-up" data-aos-duration="1000">
               <Title
                 pageName="Our History"
                 title="Our Green Tea Plantation Journey"
+                subtitle="Explore how our passion for green tea has grown from humble beginnings to a global presence."
               />
             </Box>
+
             <OurHistory />
           </Stack>
         </Container>

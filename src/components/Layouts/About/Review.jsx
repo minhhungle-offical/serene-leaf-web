@@ -11,7 +11,7 @@ const reviewList = [
 export function Review() {
   return (
     <Box>
-      <Box sx={{ my: 10 }}>
+      <Box sx={{ my: 10 }} data-aos="fade-up" data-aos-duration="1000">
         <Title pageName="Reviews" title="What Our Customers Say" />
       </Box>
 
@@ -20,6 +20,9 @@ export function Review() {
           <Box
             key={idx}
             sx={{ width: { xs: '100%', sm: 1 / 2 }, height: 'auto' }}
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay={idx * 150} // tạo hiệu ứng xuất hiện lần lượt
           >
             <Box sx={{ p: 3, height: '100%' }}>
               <Box
@@ -28,11 +31,11 @@ export function Review() {
                   border: `1px solid`,
                   borderColor: 'grey.300',
                   height: '100%',
+                  borderRadius: 2,
                 }}
               >
-                {' '}
                 <Rating name="read-only" value={5} readOnly />
-                <Typography variant="h6" color="primary">
+                <Typography variant="h6" color="primary" mt={2}>
                   {item}
                 </Typography>
               </Box>

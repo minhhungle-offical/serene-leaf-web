@@ -9,27 +9,54 @@ export default function BlogDetail({ post }) {
       <Box sx={{ py: 10 }}>
         <Container>
           <Stack spacing={3}>
-            <Typography variant="h3" fontWeight={600}>
+            <Typography
+              variant="h3"
+              fontWeight={600}
+              data-aos="fade-up"
+              data-aos-duration="800"
+            >
               {post?.title}
             </Typography>
 
-            <Typography variant="h6">{post?.shortDescription}</Typography>
+            <Typography
+              variant="h6"
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay="100"
+            >
+              {post?.shortDescription}
+            </Typography>
 
-            <Typography fontWeight={600} color="grey">
+            <Typography
+              fontWeight={600}
+              color="grey"
+              data-aos="fade-left"
+              data-aos-duration="800"
+              data-aos-delay="200"
+            >
               By {post?.author?.name} - {post?.createdAt}
             </Typography>
 
-            <Box>
+            <Box
+              data-aos="zoom-in"
+              data-aos-duration="1000"
+              data-aos-delay="300"
+            >
               <Box
                 sx={{ width: '100%' }}
                 component="img"
                 loading="lazy"
-                alt="image"
+                alt={post?.title}
                 src={post?.image?.url}
               />
             </Box>
 
-            <Box sx={{ width: '100%' }}>
+            <Box
+              sx={{ width: '100%' }}
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="400"
+            >
               {post?.content && (
                 <Typography
                   component="div"
@@ -75,7 +102,7 @@ export async function getStaticProps({ params }) {
           createdAt: dayjs(post.createdAt).format('MMM DD, YYYY'),
         },
       },
-      revalidate: 60, // ISR: mỗi 60s có thể regenerate
+      revalidate: 60,
     }
   } catch (err) {
     return {

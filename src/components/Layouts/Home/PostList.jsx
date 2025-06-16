@@ -7,20 +7,16 @@ export function PostList({ postList = [], onViewPost, onCardClick }) {
     <Box sx={{ py: 15 }}>
       <Container>
         <Stack spacing={10} alignItems="center">
-          <Title
-            pageName="Blog"
-            title="Inspiration, Recipes & Tea Wisdom"
-            subtitle="Discover creative ways to enjoy green tea — from delicious recipes to mindful brewing tips that elevate your daily ritual."
-          />
+          <Box data-aos="fade-up" data-aos-duration="1000">
+            <Title
+              pageName="Blog"
+              title="Inspiration, Recipes & Tea Wisdom"
+              subtitle="Discover creative ways to enjoy green tea — from delicious recipes to mindful brewing tips that elevate your daily ritual."
+            />
+          </Box>
 
           <Box width="100%">
-            <Stack
-              direction="row"
-              flexWrap="wrap"
-              sx={{ mx: -1.5 }}
-              data-aos="fade-up"
-              data-aos-duration="2000"
-            >
+            <Stack direction="row" flexWrap="wrap" sx={{ mx: -1.5 }}>
               {postList &&
                 postList.length &&
                 postList.map((item, idx) => (
@@ -29,6 +25,9 @@ export function PostList({ postList = [], onViewPost, onCardClick }) {
                     key={idx}
                     onClick={() => onCardClick?.(item)}
                     sx={{ height: 'auto' }}
+                    data-aos="fade-up"
+                    data-aos-delay={idx * 200}
+                    data-aos-duration="800"
                   >
                     <Box sx={{ p: 1.5, height: '100%' }}>
                       <PostCard
@@ -45,7 +44,7 @@ export function PostList({ postList = [], onViewPost, onCardClick }) {
             </Stack>
           </Box>
 
-          <Box>
+          <Box data-aos="fade-up" data-aos-delay="400">
             <Button
               variant="contained"
               sx={{ textTransform: 'none' }}

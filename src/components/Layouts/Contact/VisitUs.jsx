@@ -12,64 +12,88 @@ export function VisitUs() {
           width: { md: '50%' },
           height: '100%',
         }}
+        data-aos="fade-left"
+        data-aos-duration="1000"
       >
         <Box
+          component="img"
           width="100%"
           height="100%"
-          component="img"
           alt="visit"
           src={visit.src}
-          sx={{ verticalAlign: 'middle' }}
+          sx={{ objectFit: 'cover', verticalAlign: 'middle' }}
         />
       </Box>
 
-      <Box sx={{ py: 10 }}>
+      <Box sx={{ py: { xs: 8, md: 12 } }}>
         <Container>
           <Stack direction="row" flexWrap="wrap" sx={{ mx: -3 }}>
-            <Box sx={{ width: { xs: '100%', md: 1 / 2 }, height: 'auto' }}>
-              <Box sx={{ p: 3, height: '100%' }}>
-                <Stack justifyContent="center" height="100%">
-                  <Typography
-                    variant="h5"
-                    fontWeight={400}
-                    color="primary"
-                    gutterBottom
-                  >
-                    Visit Us
+            <Box
+              sx={{
+                width: { xs: '100%', md: 1 / 2 },
+                px: { xs: 2, sm: 3 },
+                py: { xs: 4, sm: 6 },
+              }}
+              data-aos="fade-right"
+              data-aos-duration="1000"
+            >
+              <Stack spacing={2}>
+                <Typography
+                  variant="h5"
+                  fontWeight={400}
+                  color="primary"
+                  gutterBottom
+                >
+                  Visit Us
+                </Typography>
+
+                <Typography variant="h4" fontWeight={600} gutterBottom>
+                  Visit Our Cafe & Plantation
+                </Typography>
+
+                <Box>
+                  <Typography color="primary" fontWeight={500}>
+                    Address
                   </Typography>
-
-                  <Typography variant="h4" fontWeight={600} gutterBottom>
-                    Visit Our Cafe & Plantation
-                  </Typography>
-
-                  <Typography color="primary">Address</Typography>
-
-                  <Typography sx={{ mb: 3 }}>
+                  <Typography sx={{ mb: 2 }}>
                     123 Ipsum Street, Consectetur Adipiscing, Ipsum City, Dolor
                     State, 56789
                   </Typography>
+                </Box>
 
-                  <Typography color="primary">Contact</Typography>
-
-                  <Typography sx={{ mb: 3 }}>
+                <Box>
+                  <Typography color="primary" fontWeight={500}>
+                    Contact
+                  </Typography>
+                  <Typography sx={{ mb: 2 }}>
                     (123) 456 - 7891
                     <br />
                     contact@example.com
                   </Typography>
+                </Box>
 
-                  <Typography color="primary">Contact</Typography>
-
-                  <Typography sx={{ mb: 3 }}>
-                    Weekdays –– 10:00-19:00
-                    <br />
-                    Weekends –– 09:00-19:00
+                <Box>
+                  <Typography color="primary" fontWeight={500}>
+                    Opening Hours
                   </Typography>
+                  <Typography sx={{ mb: 3 }}>
+                    Weekdays –– 10:00 - 19:00
+                    <br />
+                    Weekends –– 09:00 - 19:00
+                  </Typography>
+                </Box>
 
-                  <Box component="a" href="https://www.google.com/maps">
-                    <Button variant="outlined">Open Google Map</Button>
-                  </Box>
-                </Stack>
-              </Box>
+                <Box
+                  component="a"
+                  href="https://www.google.com/maps"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Button variant="outlined" size="large">
+                    Open Google Map
+                  </Button>
+                </Box>
+              </Stack>
             </Box>
           </Stack>
         </Container>

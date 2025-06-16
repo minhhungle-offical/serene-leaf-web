@@ -16,14 +16,16 @@ export default function FindUs() {
     setLoading(true)
     addContact
       .mutateAsync(formValues)
-      .then((res) => {
+      .then(() => {
         enqueueSnackbar('Thank you! Your submission has been received!', {
           variant: 'success',
         })
       })
       .catch((error) => {
         console.log(error)
-        enqueueSnackbar(error.message, { variant: 'error' })
+        enqueueSnackbar(error.message || 'Submission failed', {
+          variant: 'error',
+        })
       })
       .finally(() => {
         setLoading(false)
@@ -33,29 +35,31 @@ export default function FindUs() {
   return (
     <MainLayout>
       <Container>
-        <Box sx={{ my: 10 }}>
+        {/* Title Section */}
+        <Box sx={{ my: 10 }} data-aos="fade-up">
           <Title
             pageName="Find Us"
             title="Get in Touch - Reserve a Table"
-            subtitle="Cras dapibus varius sapien ac efficitur. Fusce tempus tellus quis
-            laoreet volutpat. Pellentesque vehicula pellentesque nulla at."
+            subtitle="Cras dapibus varius sapien ac efficitur. Fusce tempus tellus quis laoreet volutpat. Pellentesque vehicula pellentesque nulla at."
           />
         </Box>
 
+        {/* Contact Form */}
         <Box sx={{ my: 10 }}>
           <Box
             sx={{
               position: 'relative',
               width: { xs: '100%', md: 2 / 3 },
               mx: 'auto',
-              mb: -20,
-              p: 3,
-
-              borderRadius: '8px',
+              mb: { xs: -12, sm: -16, md: -20 },
+              p: { xs: 3, sm: 5 },
+              borderRadius: 3,
               bgcolor: 'white',
-              zIndex: 1,
+              zIndex: 2,
               boxShadow: (theme) => theme.shadows[24],
             }}
+            data-aos="fade-up"
+            data-aos-duration="1000"
           >
             <Typography
               variant="h5"
@@ -64,6 +68,16 @@ export default function FindUs() {
               gutterBottom
             >
               Contact Us
+            </Typography>
+
+            <Typography
+              variant="body1"
+              textAlign="center"
+              color="text.secondary"
+              sx={{ mb: 3 }}
+            >
+              We'd love to hear from you! Fill in the form and we’ll get back to
+              you shortly.
             </Typography>
 
             <ContactForm onSubmit={handleSubmit} loading={loading} />
