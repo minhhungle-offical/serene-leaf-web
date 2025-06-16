@@ -11,7 +11,7 @@ export const postApi = {
     return axiosClient.get(`${url}/${id}`)
   },
 
-  getSlug(slug) {
+  getBySlug(slug) {
     return axiosClient.get(`${url}/slug/${slug}`)
   },
 

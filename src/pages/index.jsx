@@ -78,6 +78,7 @@ export default function Home({ productList, postList }) {
         <PostList
           postList={postList}
           onViewPost={() => router.push(`/blogs?page=1&limit=6`)}
+          onCardClick={(item) => router.push(`/blogs/${item.slug}`)}
         />
       </MainLayout>
     </>

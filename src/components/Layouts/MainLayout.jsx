@@ -29,7 +29,7 @@ export function MainLayout({ children }) {
   return (
     <Box sx={{ bgcolor: '#f0f0f0' }}>
       <Header menuList={menuList} />
-      {children}
+      <Box sx={{ minHeight: '100vh' }}> {children}</Box>
       <Footer />
     </Box>
   )
