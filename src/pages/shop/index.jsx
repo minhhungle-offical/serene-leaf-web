@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { Box, Container, Pagination, Stack, Typography } from '@mui/material'
 import FilterListIcon from '@mui/icons-material/FilterList'
-
 import { Title } from '@/components/Common/Title'
 import { ShopFilter } from '@/components/Layouts/Products/ShopFilter'
 import { ShopList } from '@/components/Layouts/Products/ShopList'

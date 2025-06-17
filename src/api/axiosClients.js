@@ -10,10 +10,12 @@ export const axiosClient = axios.create({
 // Add a request interceptor
 axiosClient.interceptors.request.use(function (config) {
   // Auto attach token to request if available in local storage
-  // const token = localStorage.getItem('token')
-  // if (config.url !== '/login' && token) {
-  //   config.headers['Authorization'] = `Bearer ${token}`
-  // }
+  if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('token')
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`
+    }
+  }
 
   // Do something before request is sent
   return config
@@ -28,14 +30,19 @@ axiosClient.interceptors.response.use(
     return axiosData.pagination ? axiosData : axiosData.data
   },
   function (error) {
-    console.log('error: ', error)
-    // Clean up token if 401
+    const status = error?.response?.status
+    const message = error?.response?.data?.message
+
+    // 👉 If the response status is 401, remove the token.
+    if (typeof window !== 'undefined' && status === 401) {
+      localStorage.removeItem('token')
+      // Optionally: redirect to login
+      // window.location.href = '/login'
+    }
 
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
-    return Promise.reject(
-      new Error(error?.response?.data?.message || 'Something went wrong.')
-    )
+    return Promise.reject(new Error(message || 'Something went wrong.'))
   }
 )
 

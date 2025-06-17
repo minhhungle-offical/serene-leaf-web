@@ -7,12 +7,12 @@ import {
   ThemeProvider,
 } from '@mui/material/styles'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { SnackbarProvider } from 'notistack'
-
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { SnackbarProvider } from 'notistack'
 import { useEffect } from 'react'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 export let theme = createTheme({
   palette: {
     primary: {
@@ -62,6 +62,15 @@ export default function App({ Component, pageProps }) {
         <SnackbarProvider maxSnack={3}>
           <PageLoading />
           <Component {...pageProps} />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            pauseOnHover
+            theme="colored" // hoặc "light" | "dark"
+          />
         </SnackbarProvider>
       </ThemeProvider>
     </QueryClientProvider>
