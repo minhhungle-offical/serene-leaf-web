@@ -25,6 +25,10 @@ export default function CartPage() {
   const { fetchCartTotal } = useCart()
 
   useEffect(() => {
+    if (!checkLogin()) {
+      router.push('/auth/login')
+      return
+    }
     fetchCart()
   }, [])
 
