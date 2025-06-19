@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import Link from 'next/link'
 
-export function Header({ menuList = [], onShopNow }) {
+export function Header({ menuList = [], cartTotal = 0, onShopNow }) {
   return (
     <AppBar elevation={0} color="inherit" position="static" sx={{ py: 1 }}>
       <Container>
@@ -68,8 +68,13 @@ export function Header({ menuList = [], onShopNow }) {
               </Box>
             ))}
 
-            <IconButton color="inherit" sx={{ mr: 2 }}>
-              <Badge badgeContent={1} color="primary">
+            <IconButton
+              color="inherit"
+              sx={{ mr: 2 }}
+              component={Link}
+              href="/cart"
+            >
+              <Badge badgeContent={cartTotal} color="primary">
                 <ShoppingBagOutlinedIcon />
               </Badge>
             </IconButton>
@@ -78,6 +83,8 @@ export function Header({ menuList = [], onShopNow }) {
           <Button
             variant="contained"
             color="primary"
+            component={Link}
+            href="/shop?page=1&limit=6"
             onClick={() => onShopNow?.()}
             sx={{ display: { xs: 'none', md: 'flex' }, borderRadius: '10px' }}
           >

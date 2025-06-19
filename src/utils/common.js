@@ -8,3 +8,15 @@ export function formatCurrencyEN(value, currency = 'USD') {
     maximumFractionDigits: 2,
   }).format(value)
 }
+
+export const isBrowser = () => typeof window !== 'undefined'
+
+export const checkLogin = () => {
+  const token = localStorage.getItem('token')
+  if (!token) {
+    toast.info('You need to log in first')
+    router.push('/auth/login')
+    return false
+  }
+  return true
+}

@@ -1,6 +1,6 @@
 import { InputField } from '@/components/FormFields/InputField'
 import { PasswordField } from '@/components/FormFields/PasswordField'
-import { Box, Button, Stack } from '@mui/material'
+import { Box, Button, Divider, Stack } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -25,9 +25,13 @@ const schema = yup.object({
     .string()
     .required('Vui lòng nhập mật khẩu')
     .min(6, 'Mật khẩu phải ít nhất 6 ký tự'),
+  confirmPassword: yup
+    .string()
+    .required('Vui lòng xác nhận mật khẩu')
+    .oneOf([yup.ref('password')], 'Mật khẩu không khớp'),
 })
 
-export const SignUp = ({ loading, onSubmit }) => {
+export const SignUpForm = ({ loading, onSubmit }) => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       name: '',
@@ -35,6 +39,7 @@ export const SignUp = ({ loading, onSubmit }) => {
       address: '',
       phoneNumber: '',
       password: '',
+      confirmPassword: '',
     },
     resolver: yupResolver(schema),
   })
@@ -63,6 +68,18 @@ export const SignUp = ({ loading, onSubmit }) => {
 
       <Box>
         <PasswordField control={control} name="password" label="Password" />
+      </Box>
+
+      <Box>
+        <PasswordField
+          control={control}
+          name="confirmPassword"
+          label="Confirm Password"
+        />
+      </Box>
+
+      <Box py={1}>
+        <Divider />
       </Box>
 
       <Button type="submit" size="large" variant="contained" disabled={loading}>

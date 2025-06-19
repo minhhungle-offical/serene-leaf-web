@@ -1,7 +1,9 @@
 import axios from 'axios'
 
+const baseURL = `${process.env.NEXT_PUBLIC_BASE_URL}/api` // 'http://localhost:8080/api'
+
 export const axiosClient = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -27,7 +29,8 @@ axiosClient.interceptors.response.use(
     // for single response: get data
     // for plural response: get data + meta
     const axiosData = response.data
-    return axiosData.pagination ? axiosData : axiosData.data
+
+    return axiosData?.meta ? axiosData : axiosData.data
   },
   function (error) {
     const status = error?.response?.status

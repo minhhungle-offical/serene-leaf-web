@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { MainLayout } from '@/components/Layouts/MainLayout'
 import { authApi } from '@/api/authApi'
 import { LoginForm } from '@/components/Layouts/Auth/LoginForm'
+import Link from 'next/link'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -15,13 +16,18 @@ export default function LoginPage() {
     try {
       console.log('Logging in with:', formValues)
 
-      await authApi.login(formValues)
+      const data = await authApi.login(formValues)
+
+      const token = data.token
+      localStorage.setItem('token', token)
 
       toast.success('Login successful')
+
       router.push('/') // Redirect to homepage or dashboard
     } catch (error) {
       console.error('Login failed:', error)
       toast.error(error?.response?.data?.message || 'Login failed')
+      localStorage.removeItem('token')
     } finally {
       setLoading(false)
     }
@@ -44,6 +50,12 @@ export default function LoginPage() {
             <Box>
               <LoginForm loading={loading} onSubmit={handleLogin} />
             </Box>
+            <Typography align="center" sx={{ mt: 2 }}>
+              Don’t have an account?{' '}
+              <Link href="/auth/sign-up" style={{ fontWeight: 600 }}>
+                Sign Up
+              </Link>
+            </Typography>
           </Box>
         </Stack>
       </Container>

@@ -1,15 +1,12 @@
+import { cartApi } from '@/api/cartApi'
 import { productApi } from '@/api/productApi'
 import { MainLayout } from '@/components/Layouts/MainLayout'
-import { formatCurrencyEN } from '@/utils/common'
-import {
-  Box,
-  Button,
-  Container,
-  Divider,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material'
+import { AddToCartForm } from '@/components/Layouts/Products/AddToCartForm'
+import { useCart } from '@/contexts/CartContext'
+import { checkLogin, formatCurrencyEN, isBrowser } from '@/utils/common'
+import { Box, Container, Divider, Stack, Typography } from '@mui/material'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 export async function getStaticPaths() {
   try {
@@ -47,6 +44,35 @@ export async function getStaticProps({ params }) {
 }
 
 export default function ProductDetailPage({ product }) {
+  const [loading, setLoading] = useState(false)
+
+  const { fetchCartTotal } = useCart()
+
+  const handleAddToCart = async (quantity) => {
+    if (!isBrowser()) return
+    if (!product || quantity === 0) return
+
+    if (!checkLogin()) return
+
+    try {
+      setLoading(true)
+
+      await cartApi.addToCart({
+        productId: product._id,
+        quantity,
+      })
+
+      await fetchCartTotal()
+
+      toast.success('Product added to cart!')
+    } catch (error) {
+      console.error('Add to cart failed:', error)
+      toast.error('Failed to add to cart. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <MainLayout>
       <Container>
@@ -85,18 +111,11 @@ export default function ProductDetailPage({ product }) {
 
                 <Box>
                   <Typography gutterBottom>Quantity</Typography>
-                  <Stack direction="row" spacing={2} alignItems="center">
-                    <TextField
-                      type="number"
-                      size="small"
-                      value={1}
-                      inputProps={{ min: 1 }}
-                      sx={{ width: 100 }}
-                    />
-                    <Button variant="contained" sx={{ minWidth: 150 }}>
-                      Add to Cart
-                    </Button>
-                  </Stack>
+                  <AddToCartForm
+                    loading={loading}
+                    max={product?.quantity || 0}
+                    onSubmit={handleAddToCart}
+                  />
                 </Box>
 
                 <Divider />

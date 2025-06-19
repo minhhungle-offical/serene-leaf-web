@@ -1,6 +1,10 @@
 import { Box } from '@mui/material'
 import { Header } from '../Common/Header'
 import { Footer } from '../Common/Footer'
+import { useEffect, useState } from 'react'
+import { cartApi } from '@/api/cartApi'
+import dynamic from 'next/dynamic'
+import { useCart } from '@/contexts/CartContext'
 
 const menuList = [
   {
@@ -26,10 +30,11 @@ const menuList = [
 ]
 
 export function MainLayout({ children }) {
+  const { cartTotal } = useCart()
   return (
-    <Box sx={{ bgcolor: '#f0f0f0' }}>
-      <Header menuList={menuList} />
-      <Box sx={{ minHeight: '100vh' }}> {children}</Box>
+    <Box sx={{ backgroundColor: '#f0f0f0' }}>
+      <Header menuList={menuList} cartTotal={cartTotal} />
+      <Box sx={{ minHeight: '100vh' }}>{children}</Box>
       <Footer />
     </Box>
   )

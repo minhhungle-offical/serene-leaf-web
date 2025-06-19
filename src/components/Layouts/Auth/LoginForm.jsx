@@ -39,7 +39,7 @@ export const LoginForm = ({ loading, onSubmit }) => {
         <PasswordField control={control} name="password" label="Password" />
       </Box>
 
-      <Box>
+      <Box py={1}>
         <Divider />
       </Box>
 
