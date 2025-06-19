@@ -11,7 +11,7 @@ import {
 } from '@mui/material'
 import { cartApi } from '@/api/cartApi'
 import { MainLayout } from '@/components/Layouts/MainLayout'
-import { formatCurrencyEN } from '@/utils/common'
+import { checkLogin, formatCurrencyEN } from '@/utils/common'
 import { CartItem } from '@/components/Common/CartItem'
 import { toast } from 'react-toastify'
 import { useCart } from '@/contexts/CartContext'
