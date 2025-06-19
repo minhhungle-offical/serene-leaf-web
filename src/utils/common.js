@@ -12,6 +12,7 @@ export function formatCurrencyEN(value, currency = 'USD') {
 export const isBrowser = () => typeof window !== 'undefined'
 
 export const checkLogin = () => {
+  if (!isBrowser) return false
   const token = localStorage.getItem('token')
   if (!token) {
     toast.info('You need to log in first')
