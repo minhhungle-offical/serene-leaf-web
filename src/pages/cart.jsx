@@ -1,8 +1,9 @@
 import { cartApi } from '@/api/cartApi'
 import { CartItem } from '@/components/Common/CartItem'
 import { MainLayout } from '@/components/Layouts/MainLayout'
+import { useAuth } from '@/contexts/AuthContext'
 import { useCart } from '@/contexts/CartContext'
-import { checkLogin, formatCurrencyEN } from '@/utils/common'
+import { formatCurrencyEN } from '@/utils/common'
 import {
   Box,
   Button,
@@ -23,13 +24,13 @@ export default function CartPage() {
   const router = useRouter()
 
   const { fetchCartTotal } = useCart()
+  const { token } = useAuth()
 
   useEffect(() => {
-    if (!checkLogin) {
+    if (!token) {
       router.push('/auth/login')
       return
     }
-
     fetchCart()
   }, [])
 
@@ -91,7 +92,7 @@ export default function CartPage() {
     0
   )
 
-  if (!checkLogin()) return null
+  if (!token) return null
 
   return (
     <MainLayout>

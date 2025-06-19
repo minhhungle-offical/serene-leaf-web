@@ -14,6 +14,7 @@ axiosClient.interceptors.request.use(function (config) {
   // Auto attach token to request if available in local storage
   if (typeof window !== 'undefined') {
     const token = localStorage.getItem('token')
+
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`
     }

@@ -1,4 +1,5 @@
 import { PageLoading } from '@/components/Common/LoadingPage'
+import { AuthProvider } from '@/contexts/AuthContext'
 import { CartProvider } from '@/contexts/CartContext'
 import '@/styles/globals.css'
 import { CssBaseline } from '@mui/material'
@@ -62,9 +63,11 @@ export default function App({ Component, pageProps }) {
         <CssBaseline />
         <SnackbarProvider maxSnack={3}>
           <PageLoading />
-          <CartProvider>
-            <Component {...pageProps} />
-          </CartProvider>
+          <AuthProvider>
+            <CartProvider>
+              <Component {...pageProps} />
+            </CartProvider>
+          </AuthProvider>
           <ToastContainer
             position="top-right"
             autoClose={3000}

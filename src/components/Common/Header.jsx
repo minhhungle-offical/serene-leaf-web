@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import Link from 'next/link'
 
-export function Header({ menuList = [], cartTotal = 0, onShopNow }) {
+export function Header({ token, menuList = [], cartTotal = 0, onShopNow }) {
   return (
     <AppBar elevation={0} color="inherit" position="static" sx={{ py: 1 }}>
       <Container>
@@ -73,7 +73,7 @@ export function Header({ menuList = [], cartTotal = 0, onShopNow }) {
               color="inherit"
               sx={{ mr: 2 }}
               component={Link}
-              href={checkLogin() ? '/cart' : '/auth/login'}
+              href={token ? '/cart' : '/auth/login'}
             >
               <Badge badgeContent={cartTotal} color="primary">
                 <ShoppingBagOutlinedIcon />

@@ -7,29 +7,28 @@ import { authApi } from '@/api/authApi'
 import { LoginForm } from '@/components/Layouts/Auth/LoginForm'
 import Link from 'next/link'
 import { isBrowser } from '@/utils/common'
+import { useAuth } from '@/contexts/AuthContext' // ✅ dùng context
 
 export default function LoginPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const { login } = useAuth() // ✅ lấy login() từ context
 
   const handleLogin = async (formValues) => {
     if (!isBrowser) return
     setLoading(true)
     try {
-      console.log('Logging in with:', formValues)
-
       const data = await authApi.login(formValues)
 
       const token = data.token
-      localStorage.setItem('token', token)
+      const user = data.user
+      login(token, user)
 
       toast.success('Login successful')
-
-      router.push('/') // Redirect to homepage or dashboard
+      router.push('/')
     } catch (error) {
       console.error('Login failed:', error)
       toast.error(error?.response?.data?.message || 'Login failed')
-      localStorage.removeItem('token')
     } finally {
       setLoading(false)
     }
