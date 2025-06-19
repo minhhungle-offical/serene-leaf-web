@@ -49,7 +49,7 @@ export default function ProductDetailPage({ product }) {
   const { fetchCartTotal } = useCart()
 
   const handleAddToCart = async (quantity) => {
-    if (isBrowser()) return
+    if (!isBrowser()) return
     if (!product || quantity === 0) return
 
     if (!checkLogin()) return
