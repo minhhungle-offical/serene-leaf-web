@@ -10,7 +10,6 @@ export function AddToCartForm({ loading, onSubmit, max }) {
   })
 
   const handleFormSubmit = handleSubmit((formValues) => {
-    console.log('formValues', formValues)
     onSubmit?.(formValues.quantity)
   })
 
