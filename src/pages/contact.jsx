@@ -1,35 +1,18 @@
-import { Box, Container, Typography } from '@mui/material'
 import { Title } from '@/components/Common/Title'
-import { enqueueSnackbar } from 'notistack'
-import { useState } from 'react'
 import { ContactForm } from '@/components/Layouts/Contact/ContactForm'
 import { ContactList } from '@/components/Layouts/Contact/ContactList'
-import { useContacts } from '@/hooks/useContact'
 import { VisitUs } from '@/components/Layouts/Contact/VisitUs'
 import { MainLayout } from '@/components/Layouts/MainLayout'
+import { Box, Container, Typography } from '@mui/material'
+import { useState } from 'react'
 
 export default function FindUs() {
   const [loading, setLoading] = useState(false)
-  const { addContact } = useContacts()
 
   async function handleSubmit(formValues) {
     setLoading(true)
-    addContact
-      .mutateAsync(formValues)
-      .then(() => {
-        enqueueSnackbar('Thank you! Your submission has been received!', {
-          variant: 'success',
-        })
-      })
-      .catch((error) => {
-        console.log(error)
-        enqueueSnackbar(error.message || 'Submission failed', {
-          variant: 'error',
-        })
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+
+    console.log(formValues)
   }
 
   return (
