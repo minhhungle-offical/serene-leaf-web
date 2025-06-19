@@ -1,4 +1,5 @@
 import logo from '@/assets/logo.svg'
+import { checkLogin } from '@/utils/common'
 import MenuIcon from '@mui/icons-material/Menu'
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
 import {
@@ -72,7 +73,7 @@ export function Header({ menuList = [], cartTotal = 0, onShopNow }) {
               color="inherit"
               sx={{ mr: 2 }}
               component={Link}
-              href="/cart"
+              href={checkLogin() ? '/cart' : '/auth/login'}
             >
               <Badge badgeContent={cartTotal} color="primary">
                 <ShoppingBagOutlinedIcon />

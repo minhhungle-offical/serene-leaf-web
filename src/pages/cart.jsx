@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { cartApi } from '@/api/cartApi'
+import { CartItem } from '@/components/Common/CartItem'
+import { MainLayout } from '@/components/Layouts/MainLayout'
+import { useCart } from '@/contexts/CartContext'
+import { checkLogin, formatCurrencyEN } from '@/utils/common'
 import {
   Box,
-  Container,
-  Typography,
-  Stack,
-  Divider,
   Button,
   CircularProgress,
+  Container,
+  Divider,
+  Stack,
+  Typography,
 } from '@mui/material'
-import { cartApi } from '@/api/cartApi'
-import { MainLayout } from '@/components/Layouts/MainLayout'
-import { checkLogin, formatCurrencyEN } from '@/utils/common'
-import { CartItem } from '@/components/Common/CartItem'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { useCart } from '@/contexts/CartContext'
 
 export default function CartPage() {
   const [cart, setCart] = useState([])
@@ -25,10 +25,11 @@ export default function CartPage() {
   const { fetchCartTotal } = useCart()
 
   useEffect(() => {
-    if (!checkLogin()) {
+    if (!checkLogin) {
       router.push('/auth/login')
       return
     }
+
     fetchCart()
   }, [])
 
@@ -89,6 +90,8 @@ export default function CartPage() {
     (sum, item) => sum + item.product.price * item.quantity,
     0
   )
+
+  if (!checkLogin()) return null
 
   return (
     <MainLayout>
