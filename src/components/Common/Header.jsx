@@ -1,7 +1,8 @@
 import logo from '@/assets/logo.svg'
-import { checkLogin } from '@/utils/common'
+import { useRouter } from 'next/router'
 import MenuIcon from '@mui/icons-material/Menu'
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
+import LogoutIcon from '@mui/icons-material/Logout'
 import {
   AppBar,
   Badge,
@@ -11,14 +12,24 @@ import {
   IconButton,
   Stack,
   Toolbar,
+  Typography,
 } from '@mui/material'
 import Link from 'next/link'
 
-export function Header({ token, menuList = [], cartTotal = 0, onShopNow }) {
+export function Header({
+  token,
+  user = null,
+  menuList = [],
+  cartTotal = 0,
+  logout,
+}) {
+  const router = useRouter()
+
   return (
     <AppBar elevation={0} color="inherit" position="static" sx={{ py: 1 }}>
       <Container>
         <Toolbar disableGutters>
+          {/* Mobile menu icon */}
           <IconButton
             edge="start"
             color="primary"
@@ -26,6 +37,8 @@ export function Header({ token, menuList = [], cartTotal = 0, onShopNow }) {
           >
             <MenuIcon />
           </IconButton>
+
+          {/* Logo */}
           <Box component={Link} href="/">
             <Box
               component="img"
@@ -43,11 +56,12 @@ export function Header({ token, menuList = [], cartTotal = 0, onShopNow }) {
 
           <Box flexGrow={1} />
 
+          {/* Menu links & buttons */}
           <Stack
             direction="row"
             spacing={1}
+            alignItems="center"
             sx={{
-              flexGrow: { xs: 0, md: 1 },
               '& a': {
                 color: 'inherit',
                 textDecoration: 'none',
@@ -58,6 +72,7 @@ export function Header({ token, menuList = [], cartTotal = 0, onShopNow }) {
               '& button': { textTransform: 'none', fontWeight: 600 },
             }}
           >
+            {/* Menu list */}
             {menuList?.map((item, idx) => (
               <Box
                 component={Link}
@@ -69,11 +84,19 @@ export function Header({ token, menuList = [], cartTotal = 0, onShopNow }) {
               </Box>
             ))}
 
+            {/* Cart icon */}
             <IconButton
               color="inherit"
-              sx={{ mr: 2 }}
+              sx={{ mr: 1 }}
               component={Link}
-              href={token ? '/cart' : '/auth/login'}
+              href={
+                token
+                  ? '/cart'
+                  : {
+                      pathname: '/auth/login',
+                      query: { redirect: router.asPath },
+                    }
+              }
             >
               <Badge badgeContent={cartTotal} color="primary">
                 <ShoppingBagOutlinedIcon />
@@ -81,16 +104,35 @@ export function Header({ token, menuList = [], cartTotal = 0, onShopNow }) {
             </IconButton>
           </Stack>
 
-          <Button
-            variant="contained"
-            color="primary"
-            component={Link}
-            href="/shop?page=1&limit=6"
-            onClick={() => onShopNow?.()}
-            sx={{ display: { xs: 'none', md: 'flex' }, borderRadius: '10px' }}
-          >
-            SHOP NOW
-          </Button>
+          <Box flexGrow={1} />
+
+          {/* Login / Logout / Welcome */}
+          {!token ? (
+            <>
+              <Button component={Link} href="/auth/sign-up" color="inherit">
+                Đăng ký
+              </Button>
+              <Button
+                component={Link}
+                href={{
+                  pathname: '/auth/login',
+                  query: { redirect: router.asPath },
+                }}
+                color="inherit"
+              >
+                Đăng nhập
+              </Button>
+            </>
+          ) : (
+            <>
+              <Typography variant="body2" sx={{ fontWeight: 600, mx: 1 }}>
+                Xin chào, {user?.name}
+              </Typography>
+              <IconButton color="inherit" onClick={logout} title="Logout">
+                <LogoutIcon />
+              </IconButton>
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

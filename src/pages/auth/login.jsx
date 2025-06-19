@@ -13,6 +13,7 @@ export default function LoginPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const { login } = useAuth() // ✅ lấy login() từ context
+  const { redirect } = router.query
 
   const handleLogin = async (formValues) => {
     if (!isBrowser) return
@@ -24,8 +25,13 @@ export default function LoginPage() {
       const user = data.user
       login(token, user)
 
-      toast.success('Login successful')
-      router.push('/')
+      if (redirect) {
+        router.push(redirect)
+      } else if (window.history.length > 2) {
+        router.back()
+      } else {
+        router.push('/')
+      }
     } catch (error) {
       console.error('Login failed:', error)
       toast.error(error?.response?.data?.message || 'Login failed')
@@ -53,7 +59,13 @@ export default function LoginPage() {
             </Box>
             <Typography align="center" sx={{ mt: 2 }}>
               Don’t have an account?{' '}
-              <Link href="/auth/sign-up" style={{ fontWeight: 600 }}>
+              <Link
+                href={{
+                  pathname: '/auth/sign-up',
+                  query: { redirect: router.query.redirect || '/' },
+                }}
+                style={{ fontWeight: 600 }}
+              >
                 Sign Up
               </Link>
             </Typography>

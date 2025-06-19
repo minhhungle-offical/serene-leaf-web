@@ -9,11 +9,14 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const savedToken = localStorage.getItem('token')
+    const saveUser = localStorage.getItem('user')
     if (savedToken) setToken(savedToken)
+    if (saveUser) setUser(JSON.parse(saveUser))
   }, [])
 
   const login = (newToken, newUser) => {
     localStorage.setItem('token', newToken)
+    localStorage.setItem('user', JSON.stringify(newUser))
     setUser(newUser)
     setToken(newToken)
   }
@@ -21,6 +24,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('token')
     setToken(null)
+    setUser(null)
+    window.location.href = '/' // 👈 hard reload
   }
 
   return (

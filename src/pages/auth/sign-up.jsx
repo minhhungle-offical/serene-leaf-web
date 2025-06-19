@@ -21,7 +21,10 @@ export default function SignUpPage() {
       await authApi.register(formValues)
 
       toast.success('Sign up successful! Redirecting...')
-      router.push('/auth/login')
+      router.push({
+        pathname: '/auth/login',
+        query: { redirect: router.query.redirect || '/' },
+      })
     } catch (error) {
       console.error('Sign up failed:', error)
       toast.error(error?.response?.data?.message || 'Sign up failed')
@@ -50,7 +53,13 @@ export default function SignUpPage() {
 
             <Typography align="center" sx={{ mt: 2 }}>
               Already have an account?{' '}
-              <Link href="/auth/login" style={{ fontWeight: 600 }}>
+              <Link
+                href={{
+                  pathname: '/auth/login',
+                  query: { redirect: router.query.redirect || '/' },
+                }}
+                style={{ fontWeight: 600 }}
+              >
                 Login
               </Link>
             </Typography>

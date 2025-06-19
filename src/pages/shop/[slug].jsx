@@ -2,9 +2,11 @@ import { cartApi } from '@/api/cartApi'
 import { productApi } from '@/api/productApi'
 import { MainLayout } from '@/components/Layouts/MainLayout'
 import { AddToCartForm } from '@/components/Layouts/Products/AddToCartForm'
+import { useAuth } from '@/contexts/AuthContext'
 import { useCart } from '@/contexts/CartContext'
-import { checkLogin, formatCurrencyEN, isBrowser } from '@/utils/common'
+import { formatCurrencyEN, isBrowser } from '@/utils/common'
 import { Box, Container, Divider, Stack, Typography } from '@mui/material'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -45,14 +47,21 @@ export async function getStaticProps({ params }) {
 
 export default function ProductDetailPage({ product }) {
   const [loading, setLoading] = useState(false)
+  const { token } = useAuth()
+  const router = useRouter()
 
   const { fetchCartTotal } = useCart()
 
   const handleAddToCart = async (quantity) => {
-    if (!isBrowser()) return
-    if (!product || quantity === 0) return
+    if (!token) {
+      router.push({
+        pathname: '/auth/login',
+        query: { redirect: router.asPath },
+      })
+      return
+    }
 
-    if (!checkLogin()) return
+    if (!product || quantity === 0) return
 
     try {
       setLoading(true)

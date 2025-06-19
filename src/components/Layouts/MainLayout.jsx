@@ -32,10 +32,16 @@ const menuList = [
 
 export function MainLayout({ children }) {
   const { cartTotal } = useCart()
-  const { token } = useAuth()
+  const { token, user, logout } = useAuth()
   return (
     <Box sx={{ backgroundColor: '#f0f0f0' }}>
-      <Header menuList={menuList} cartTotal={cartTotal} token={token} />
+      <Header
+        user={user}
+        menuList={menuList}
+        cartTotal={cartTotal}
+        token={token}
+        logout={() => logout()}
+      />
       <Box sx={{ minHeight: '100vh' }}>{children}</Box>
       <Footer />
     </Box>
