@@ -6,12 +6,14 @@ import { MainLayout } from '@/components/Layouts/MainLayout'
 import { authApi } from '@/api/authApi'
 import { SignUpForm } from '@/components/Layouts/Auth/SignUpForm'
 import Link from 'next/link'
+import { isBrowser } from '@/utils/common'
 
 export default function SignUpPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
 
   const handleSignUp = async (formValues) => {
+    if (isBrowser) return
     setLoading(true)
     try {
       console.log('Signing up with:', formValues)
