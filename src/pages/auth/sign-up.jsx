@@ -13,7 +13,7 @@ export default function SignUpPage() {
   const [loading, setLoading] = useState(false)
 
   const handleSignUp = async (formValues) => {
-    if (isBrowser) return
+    if (!isBrowser) return
     setLoading(true)
     try {
       console.log('Signing up with:', formValues)

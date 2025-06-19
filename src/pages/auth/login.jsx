@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
 
   const handleLogin = async (formValues) => {
-    if (isBrowser) return
+    if (!isBrowser) return
     setLoading(true)
     try {
       console.log('Logging in with:', formValues)
